@@ -24,17 +24,24 @@ const AboutSection = () => {
         </div>
         
         <div className="flex flex-col lg:flex-row gap-16 items-center">
-          {/* Enhanced Image Column */}
+          {/* Enhanced Image Column with Square Profile Picture */}
           <div className="lg:w-5/12">
             <div className="relative group">
               {/* Animated background rings */}
-              <div className="absolute -inset-8 bg-gradient-to-r from-cyber-primary to-cyber-secondary rounded-full opacity-20 animate-pulse-slow"></div>
+              <div className="absolute -inset-8 bg-gradient-to-r from-cyber-primary to-cyber-secondary rounded-xl opacity-20 animate-pulse-slow"></div>
               <div className="absolute -inset-4 border-2 border-cyber-primary/30 rounded-lg animate-pulse"></div>
               
               {/* Main profile image container */}
               <div className="relative z-10 bg-gradient-to-tr from-cyber-primary via-cyber-secondary to-cyber-accent p-1 rounded-2xl shadow-2xl group-hover:shadow-cyber-primary/25 transition-all duration-500">
-                <div className="bg-muted h-80 md:h-96 rounded-xl flex items-center justify-center text-cyber-primary relative overflow-hidden">
-                  {/* Animated background pattern */}
+                <div className="bg-muted h-80 md:h-96 rounded-xl overflow-hidden relative">
+                  {/* Profile image */}
+                  <img 
+                    src="https://i.postimg.cc/RF5LJ3TL/Photo-Casual.jpg" 
+                    alt="Rajat Tripathi - About Me"
+                    className="w-full h-full object-cover"
+                  />
+                  
+                  {/* Animated background pattern overlay */}
                   <div className="absolute inset-0 opacity-10">
                     <div className="grid grid-cols-8 gap-2 h-full w-full p-4">
                       {Array.from({ length: 32 }).map((_, i) => (
@@ -42,11 +49,6 @@ const AboutSection = () => {
                       ))}
                     </div>
                   </div>
-                  
-                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="relative z-10">
-                    <path d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z" />
-                    <path d="M20 22a8 8 0 0 0-16 0" />
-                  </svg>
                 </div>
               </div>
               
