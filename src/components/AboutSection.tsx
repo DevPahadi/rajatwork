@@ -99,7 +99,7 @@ const AboutSection = () => {
                       <li className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-cyber-secondary rounded-full mt-2 flex-shrink-0"></div>
                         <div>
-                          <span className="font-semibold text-foreground block">B.Sc in IT</span>
+                          <span className="text-foreground block font-bold">B.Sc Information Technology</span>
                           <span className="text-sm text-muted-foreground">Graphic Era Hill University (2022)</span>
                         </div>
                       </li>
