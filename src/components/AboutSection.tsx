@@ -78,7 +78,7 @@ const AboutSection = () => {
               {/* Enhanced Cards Grid */}
               <div className="grid md:grid-cols-2 gap-6 mb-10">
                 <Card className="card-hover border-0 bg-gradient-to-br from-card to-muted/50 shadow-lg">
-                  <CardContent className="pt-6">
+                  <CardContent className="card-hover border-0 bg-gradient-to-br from-card to-muted/50 shadow-lg">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-10 h-10 bg-cyber-primary/10 rounded-full flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyber-primary">
