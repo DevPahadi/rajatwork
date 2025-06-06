@@ -111,6 +111,10 @@ export default {
 						'background-size': '200% 200%',
 						'background-position': 'right center'
 					}
+				},
+				'spin-slow': {
+					from: { transform: 'rotate(0deg)' },
+					to: { transform: 'rotate(360deg)' }
 				}
 			},
 			animation: {
@@ -118,7 +122,8 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
 				'float': 'float 6s ease-in-out infinite',
-				'gradient-x': 'gradient-x 15s ease infinite'
+				'gradient-x': 'gradient-x 15s ease infinite',
+				'spin-slow': 'spin-slow 15s linear infinite'
 			}
 		}
 	},
