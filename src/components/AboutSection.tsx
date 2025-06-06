@@ -1,11 +1,8 @@
-
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
 const AboutSection = () => {
-  return (
-    <section id="about" className="py-24 bg-gradient-to-b from-background to-muted/30 section-pattern relative overflow-hidden">
+  return <section id="about" className="py-24 bg-gradient-to-b from-background to-muted/30 section-pattern relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-cyber-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-40 h-40 bg-cyber-secondary/5 rounded-full blur-3xl"></div>
@@ -35,18 +32,16 @@ const AboutSection = () => {
               <div className="relative z-10 bg-gradient-to-tr from-cyber-primary via-cyber-secondary to-cyber-accent p-1 rounded-2xl shadow-2xl group-hover:shadow-cyber-primary/25 transition-all duration-500">
                 <div className="bg-muted h-80 md:h-96 rounded-xl overflow-hidden relative">
                   {/* Profile image */}
-                  <img 
-                    src="https://i.postimg.cc/RF5LJ3TL/Photo-Casual.jpg" 
-                    alt="Rajat Tripathi - About Me"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="https://i.postimg.cc/RF5LJ3TL/Photo-Casual.jpg" alt="Rajat Tripathi - About Me" className="w-full h-full object-cover" />
                   
                   {/* Animated background pattern overlay */}
                   <div className="absolute inset-0 opacity-10">
                     <div className="grid grid-cols-8 gap-2 h-full w-full p-4">
-                      {Array.from({ length: 32 }).map((_, i) => (
-                        <div key={i} className="bg-cyber-primary rounded animate-pulse" style={{ animationDelay: `${i * 0.1}s` }}></div>
-                      ))}
+                      {Array.from({
+                      length: 32
+                    }).map((_, i) => <div key={i} className="bg-cyber-primary rounded animate-pulse" style={{
+                      animationDelay: `${i * 0.1}s`
+                    }}></div>)}
                     </div>
                   </div>
                 </div>
@@ -87,8 +82,8 @@ const AboutSection = () => {
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-10 h-10 bg-cyber-primary/10 rounded-full flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyber-primary">
-                          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                          <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                          <path d="M6 12v5c3 3 9 3 12 0v-5" />
                         </svg>
                       </div>
                       <h5 className="font-bold text-lg">Education</h5>
@@ -117,10 +112,10 @@ const AboutSection = () => {
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-10 h-10 bg-cyber-secondary/10 rounded-full flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyber-secondary">
-                          <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
-                          <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
-                          <line x1="6" y1="6" x2="6.01" y2="6"/>
-                          <line x1="6" y1="18" x2="6.01" y2="18"/>
+                          <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+                          <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+                          <line x1="6" y1="6" x2="6.01" y2="6" />
+                          <line x1="6" y1="18" x2="6.01" y2="18" />
                         </svg>
                       </div>
                       <h5 className="font-bold text-lg">Experience</h5>
@@ -148,7 +143,7 @@ const AboutSection = () => {
               {/* Enhanced Stats */}
               <div className="grid grid-cols-3 gap-8">
                 <div className="text-center group">
-                  <div className="text-4xl font-bold text-cyber-primary mb-2 group-hover:scale-110 transition-transform">20+</div>
+                  <div className="text-4xl font-bold text-cyber-primary mb-2 group-hover:scale-110 transition-transform">5+</div>
                   <p className="text-sm text-muted-foreground">Security Projects</p>
                 </div>
                 <div className="text-center group">
@@ -164,8 +159,6 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default AboutSection;
