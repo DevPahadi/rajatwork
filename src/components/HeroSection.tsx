@@ -98,7 +98,7 @@ const HeroSection = () => {
             </div>
           </div>
           
-          {/* Hero Visual */}
+          {/* Hero Visual with Profile Picture */}
           <div className="lg:w-1/2 flex justify-center">
             <div className="relative">
               {/* Main profile container */}
@@ -106,15 +106,12 @@ const HeroSection = () => {
                 {/* Gradient border */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyber-primary via-cyber-accent to-cyber-secondary p-1 animate-gradient-x">
                   <div className="bg-background rounded-full w-full h-full overflow-hidden relative">
-                    {/* Profile image placeholder */}
-                    <div className="w-full h-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
-                      <div className="text-cyber-primary/40">
-                        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                          <circle cx="12" cy="7" r="4" />
-                        </svg>
-                      </div>
-                    </div>
+                    {/* Profile image */}
+                    <img 
+                      src="https://i.postimg.cc/PxbtMZzf/RAJAT-PHOTO.jpg" 
+                      alt="Rajat Tripathi - Cybersecurity Expert"
+                      className="w-full h-full object-cover rounded-full"
+                    />
                     
                     {/* Inner glow effect */}
                     <div className="absolute inset-4 rounded-full border border-cyber-primary/20 animate-pulse-slow" />
