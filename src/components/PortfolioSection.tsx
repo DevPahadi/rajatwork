@@ -17,7 +17,7 @@ const projects: Project[] = [
     id: 1,
     title: "Security Aspects in AI Thesis",
     category: "Research",
-    image: "",
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=600&fit=crop",
     description: "Research exploring ML model vulnerabilities and defense techniques, focusing on adversarial attacks and model security.",
     technologies: ["Python", "TensorFlow", "Machine Learning", "Security"]
   },
@@ -25,7 +25,7 @@ const projects: Project[] = [
     id: 2,
     title: "AI-Based Wildlife Security Surveillance",
     category: "IoT",
-    image: "",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
     description: "Real-time wildlife zone monitoring system using IoT and Raspberry Pi for detection and alert of unauthorized entries.",
     technologies: ["IoT", "Raspberry Pi", "Computer Vision", "Security Systems"]
   },
@@ -33,47 +33,23 @@ const projects: Project[] = [
     id: 3,
     title: "One-Tap Doctor",
     category: "Web App",
-    image: "",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop",
     description: "Mobile application for emergency medical services in Uttarakhand with real-time booking and AWS cloud deployment.",
     technologies: ["React", "Node.js", "AWS", "Mobile App"]
-  },
-  {
-    id: 4,
-    title: "Network Intrusion Detection System",
-    category: "Security",
-    image: "",
-    description: "Custom NIDS using machine learning to detect anomalous network traffic patterns and potential security breaches.",
-    technologies: ["Python", "ML", "Network Security", "Data Analysis"]
-  },
-  {
-    id: 5,
-    title: "Web Application Firewall",
-    category: "Security",
-    image: "",
-    description: "Implementation of a WAF to protect web applications from various attacks including XSS and SQL injection.",
-    technologies: ["ModSecurity", "NGINX", "Rule Sets", "Web Security"]
-  },
-  {
-    id: 6,
-    title: "Secure DevOps Pipeline",
-    category: "DevOps",
-    image: "",
-    description: "Integration of security checks and controls into CI/CD pipelines for automated vulnerability detection.",
-    technologies: ["Jenkins", "Docker", "OWASP", "DevSecOps"]
   }
 ];
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <Card className="overflow-hidden card-hover group">
-      <div className="h-48 bg-muted relative">
-        {/* Project image would go here */}
-        <div className="absolute inset-0 flex items-center justify-center bg-cyber-primary/10 text-cyber-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
-          </svg>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="h-48 bg-muted relative overflow-hidden">
+        <img 
+          src={project.image} 
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
           <Button variant="secondary" size="sm" className="bg-cyber-accent text-cyber-dark hover:bg-cyber-accent/90">
             View Project
           </Button>
@@ -99,7 +75,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
 const PortfolioSection = () => {
   const [filter, setFilter] = useState("All");
-  const categories = ["All", "Research", "IoT", "Web App", "Security", "DevOps"];
+  const categories = ["All", "Research", "IoT", "Web App"];
   
   const filteredProjects = filter === "All" 
     ? projects 

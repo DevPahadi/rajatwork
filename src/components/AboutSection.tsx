@@ -1,8 +1,11 @@
+
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+
 const AboutSection = () => {
-  return <section id="about" className="py-24 bg-gradient-to-b from-background to-muted/30 section-pattern relative overflow-hidden">
+  return (
+    <section id="about" className="py-24 bg-gradient-to-b from-background to-muted/30 section-pattern relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-cyber-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-40 h-40 bg-cyber-secondary/5 rounded-full blur-3xl"></div>
@@ -32,16 +35,22 @@ const AboutSection = () => {
               <div className="relative z-10 bg-gradient-to-tr from-cyber-primary via-cyber-secondary to-cyber-accent p-1 rounded-2xl shadow-2xl group-hover:shadow-cyber-primary/25 transition-all duration-500">
                 <div className="bg-muted h-80 md:h-96 rounded-xl overflow-hidden relative">
                   {/* Profile image */}
-                  <img src="https://i.postimg.cc/RF5LJ3TL/Photo-Casual.jpg" alt="Rajat Tripathi - About Me" className="w-full h-full object-cover" />
+                  <img 
+                    src="https://i.postimg.cc/RF5LJ3TL/Photo-Casual.jpg" 
+                    alt="Rajat Tripathi - About Me" 
+                    className="w-full h-full object-cover" 
+                  />
                   
                   {/* Animated background pattern overlay */}
                   <div className="absolute inset-0 opacity-10">
                     <div className="grid grid-cols-8 gap-2 h-full w-full p-4">
-                      {Array.from({
-                      length: 32
-                    }).map((_, i) => <div key={i} className="bg-cyber-primary rounded animate-pulse" style={{
-                      animationDelay: `${i * 0.1}s`
-                    }}></div>)}
+                      {Array.from({ length: 32 }).map((_, i) => (
+                        <div 
+                          key={i} 
+                          className="bg-cyber-primary rounded animate-pulse" 
+                          style={{ animationDelay: `${i * 0.1}s` }}
+                        ></div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -78,7 +87,7 @@ const AboutSection = () => {
               {/* Enhanced Cards Grid */}
               <div className="grid md:grid-cols-2 gap-6 mb-10">
                 <Card className="card-hover border-0 bg-gradient-to-br from-card to-muted/50 shadow-lg">
-                  <CardContent className="card-hover border-0 bg-gradient-to-br from-card to-muted/50 shadow-lg">
+                  <CardContent className="pt-6">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-10 h-10 bg-cyber-primary/10 rounded-full flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyber-primary">
@@ -92,14 +101,14 @@ const AboutSection = () => {
                       <li className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-cyber-primary rounded-full mt-2 flex-shrink-0"></div>
                         <div>
-                          <span className="font-semibold text-foreground block">MCA</span>
+                          <span className="font-semibold text-foreground block text-sm">MCA</span>
                           <span className="text-sm text-muted-foreground">Graphic Era University (2024)</span>
                         </div>
                       </li>
                       <li className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-cyber-secondary rounded-full mt-2 flex-shrink-0"></div>
                         <div>
-                          <span className="text-foreground block font-bold">B.Sc Information Technology</span>
+                          <span className="font-semibold text-foreground block text-sm">B.Sc Information Technology</span>
                           <span className="text-sm text-muted-foreground">Graphic Era Hill University (2022)</span>
                         </div>
                       </li>
@@ -159,6 +168,8 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default AboutSection;

@@ -1,10 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 const ContactOption = ({ 
   icon, 
@@ -40,9 +42,66 @@ const ContactOption = ({
 };
 
 const ContactSection = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted");
+    setIsLoading(true);
+
+    try {
+      // Replace these with your actual EmailJS credentials
+      const result = await emailjs.send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: 'Rajat Tripathi'
+        },
+        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      );
+
+      if (result.text === 'OK') {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      }
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -152,6 +211,9 @@ const ContactSection = () => {
                       </label>
                       <Input 
                         id="name" 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         placeholder="John Doe" 
                         required 
                         className="h-12 border-2 border-border focus:border-cyber-primary transition-colors rounded-xl"
@@ -163,7 +225,10 @@ const ContactSection = () => {
                       </label>
                       <Input 
                         id="email" 
+                        name="email"
                         type="email" 
+                        value={formData.email}
+                        onChange={handleInputChange}
                         placeholder="john@example.com" 
                         required 
                         className="h-12 border-2 border-border focus:border-cyber-primary transition-colors rounded-xl"
@@ -177,6 +242,9 @@ const ContactSection = () => {
                     </label>
                     <Input 
                       id="subject" 
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
                       placeholder="How can I help you?" 
                       required 
                       className="h-12 border-2 border-border focus:border-cyber-primary transition-colors rounded-xl"
@@ -189,6 +257,9 @@ const ContactSection = () => {
                     </label>
                     <Textarea 
                       id="message" 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
                       placeholder="Tell me about your project or security needs..." 
                       rows={6} 
                       required 
@@ -198,13 +269,16 @@ const ContactSection = () => {
                   
                   <Button 
                     type="submit" 
-                    className="bg-gradient-to-r from-cyber-primary to-cyber-secondary hover:from-cyber-primary/90 hover:to-cyber-secondary/90 w-full h-12 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                    disabled={isLoading}
+                    className="bg-gradient-to-r from-cyber-primary to-cyber-secondary hover:from-cyber-primary/90 hover:to-cyber-secondary/90 w-full h-12 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2">
-                      <path d="m22 2-7 20-4-9-9-4Z"/>
-                      <path d="M22 2 11 13"/>
-                    </svg>
+                    {isLoading ? 'Sending...' : 'Send Message'}
+                    {!isLoading && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2">
+                        <path d="m22 2-7 20-4-9-9-4Z"/>
+                        <path d="M22 2 11 13"/>
+                      </svg>
+                    )}
                   </Button>
                 </form>
               </CardContent>
