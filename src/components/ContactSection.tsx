@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -154,8 +155,8 @@ const ContactSection = () => {
                   <path d="M17.5 7.5V7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>}
                 title="LinkedIn Profile"
-                value="linkedin.com/in/rajat-tripathi"
-                link="https://linkedin.com/in/rajat-tripathi"
+                value="linkedin.com/in/rajat-tripathi-00/"
+                link="https://www.linkedin.com/in/rajat-tripathi-00/"
                 gradient="from-cyber-accent to-cyber-primary"
               />
               
@@ -165,8 +166,8 @@ const ContactSection = () => {
                   <path d="M9 18C4.49 20 4 16 2 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>}
                 title="GitHub Repository"
-                value="github.com/rajat-tripathi"
-                link="https://github.com/rajat-tripathi"
+                value="github.com/DevPahadi"
+                link="https://github.com/DevPahadi"
                 gradient="from-cyber-primary to-cyber-secondary"
               />
             </div>
