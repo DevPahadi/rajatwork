@@ -2,7 +2,15 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Code, Server, Lock } from "lucide-react";
+
 const HeroSection = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-muted/30">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -63,13 +71,22 @@ const HeroSection = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button size="lg" className="bg-gradient-to-r from-cyber-primary to-cyber-secondary hover:from-cyber-primary/90 hover:to-cyber-secondary/90 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-cyber-primary to-cyber-secondary hover:from-cyber-primary/90 hover:to-cyber-secondary/90 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                  onClick={() => scrollToSection('portfolio')}
+                >
                   View Portfolio
                   <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Button>
-                <Button variant="outline" size="lg" className="border-2 border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-white px-8 py-6 text-lg transition-all duration-300 transform hover:-translate-y-1">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-2 border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-white px-8 py-6 text-lg transition-all duration-300 transform hover:-translate-y-1"
+                  onClick={() => scrollToSection('contact')}
+                >
                   Get In Touch
                 </Button>
               </div>
@@ -169,4 +186,5 @@ const HeroSection = () => {
       </div>
     </section>;
 };
+
 export default HeroSection;
