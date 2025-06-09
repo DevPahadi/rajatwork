@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -64,10 +63,9 @@ const ContactSection = () => {
     setIsLoading(true);
 
     try {
-      // Replace these with your actual EmailJS credentials
       const result = await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        'service_p6o5ugg', // Your EmailJS service ID
+        'template_2nghyco', // Your EmailJS template ID
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -75,7 +73,7 @@ const ContactSection = () => {
           message: formData.message,
           to_name: 'Rajat Tripathi'
         },
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+        'oFeXPJQ_r3Bu7JMHG' // Your EmailJS public key
       );
 
       if (result.text === 'OK') {
