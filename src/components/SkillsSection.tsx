@@ -50,7 +50,8 @@ const SkillsSection = () => {
         { name: "VAPT", level: 95 },
         { name: "OWASP Top 10", level: 90 },
         { name: "MITRE ATT&CK", level: 85 },
-        { name: "ISO 27001", level: 80 }
+        { name: "ISO/IEC 27001", level: 80 },
+        { name: "NIST Framework", level: 78 }
       ]
     },
     {
@@ -65,9 +66,11 @@ const SkillsSection = () => {
       ),
       skills: [
         { name: "TCP/IP", level: 90 },
-        { name: "VPN", level: 85 },
-        { name: "Firewalls", level: 90 },
-        { name: "SIEM", level: 80 }
+        { name: "Endpoint Security", level: 85 },
+        { name: "VPNs", level: 88 },
+        { name: "IDS/IPS", level: 82 },
+        { name: "SIEM", level: 80 },
+        { name: "Firewalls", level: 90 }
       ]
     },
     {
@@ -89,12 +92,13 @@ const SkillsSection = () => {
       skills: [
         { name: "Linux", level: 90 },
         { name: "Windows Server", level: 85 },
-        { name: "AWS/Azure", level: 75 },
-        { name: "Server Hardening", level: 90 }
+        { name: "AWS/Azure/GSuite", level: 75 },
+        { name: "Active Directory", level: 80 },
+        { name: "IT Support", level: 88 }
       ]
     },
     {
-      title: "SOC Tools & Programming",
+      title: "SOC & Security Tools",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M18 8a6 6 0 0 0-6-6H8a6 6 0 0 0 0 12h4a6 6 0 0 1 0 12H8a6 6 0 0 1-6-6" />
@@ -102,9 +106,48 @@ const SkillsSection = () => {
       ),
       skills: [
         { name: "Wireshark", level: 85 },
-        { name: "Metasploit", level: 90 },
+        { name: "Nmap", level: 90 },
+        { name: "Metasploit", level: 88 },
         { name: "BurpSuite", level: 85 },
-        { name: "Python & Bash", level: 80 }
+        { name: "Nessus", level: 82 },
+        { name: "Splunk", level: 75 }
+      ]
+    },
+    {
+      title: "DevOps & DevSecOps",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 1v6m0 6v6" />
+          <path d="m15.5 3.5-1 1m-5 5-1 1m-5 5-1 1" />
+          <path d="m20.5 8.5-1 1m-5 5-1 1m-5 5-1 1" />
+          <path d="M1 12h6m6 0h6" />
+        </svg>
+      ),
+      skills: [
+        { name: "CI/CD Fundamentals", level: 70 },
+        { name: "Shell Scripting", level: 85 },
+        { name: "Bash", level: 88 },
+        { name: "Ansible (Basics)", level: 65 },
+        { name: "Git", level: 82 },
+        { name: "Docker", level: 75 }
+      ]
+    },
+    {
+      title: "Programming & Databases",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+      ),
+      skills: [
+        { name: "Python", level: 85 },
+        { name: "C/C++", level: 78 },
+        { name: "Bash", level: 88 },
+        { name: "Log Parsing", level: 80 },
+        { name: "MySQL", level: 75 },
+        { name: "PostgreSQL", level: 72 }
       ]
     }
   ];
@@ -119,7 +162,7 @@ const SkillsSection = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
           {skillCategories.map((category) => (
             <SkillCategory 
               key={category.title}
