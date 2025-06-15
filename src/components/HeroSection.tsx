@@ -63,11 +63,7 @@ const HeroSection = () => {
               </div>
               
               <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-                Transforming security challenges into robust solutions through 
-                <span className="text-cyber-primary font-semibold"> Offensive security</span>, 
-                <span className="text-cyber-primary font-semibold"> Vulnerability Assessment</span>, and 
-                <span className="text-cyber-primary font-semibold"> System Hardening</span>. 
-                CEH v12 certified professional with hands-on experience in penetration testing.
+                Hey, I'm Rajat Tripathi — a cybersecurity enthusiast, CEH v12 certified, and someone who loves breaking things just to build them back safer. From spotting vulnerabilities to tightening server defenses, I blend ethical hacking with real-world IT experience to keep systems sharp and secure. If it's exploitable, I'll find it. If it's broken, I'll fix it — smarter and stronger.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
