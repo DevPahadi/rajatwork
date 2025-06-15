@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 type Project = {
   id: number;
@@ -58,9 +59,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
       <CardContent className="pt-4">
         <div className="flex justify-between items-start mb-2">
           <h3 className="font-bold text-lg">{project.title}</h3>
-          <span className="bg-cyber-primary/10 text-cyber-primary text-xs px-2 py-1 rounded-full">{project.category}</span>
+          <Badge variant="outline" className="bg-cyber-primary/10 text-cyber-primary text-xs border-cyber-primary/30">
+            {project.category}
+          </Badge>
         </div>
-        <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
+        <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
         <div className="flex flex-wrap gap-2">
           {project.technologies.map((tech, index) => (
             <span key={index} className="text-xs bg-muted px-2 py-1 rounded-full">
@@ -82,11 +85,20 @@ const PortfolioSection = () => {
     : projects.filter(project => project.category === filter);
 
   return (
-    <section id="portfolio" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">My Portfolio</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+    <section id="portfolio" className="py-24 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-to-r from-cyber-secondary/5 to-cyber-accent/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-r from-cyber-primary/5 to-cyber-secondary/5 rounded-full blur-3xl"></div>
+
+      <div className="container mx-auto px-4 relative">
+        <div className="text-center mb-20">
+          <Badge variant="outline" className="mb-4 px-4 py-2 text-sm">
+            Portfolio
+          </Badge>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
+            Featured Projects
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             A showcase of my cybersecurity projects and technical implementations
           </p>
         </div>
@@ -97,7 +109,7 @@ const PortfolioSection = () => {
             <Button 
               key={category}
               variant={filter === category ? "default" : "outline"}
-              className={filter === category ? "bg-cyber-primary hover:bg-cyber-primary/90" : ""}
+              className={filter === category ? "bg-cyber-primary hover:bg-cyber-primary/90" : "hover:bg-cyber-primary/10 hover:text-cyber-primary"}
               onClick={() => setFilter(category)}
             >
               {category}
