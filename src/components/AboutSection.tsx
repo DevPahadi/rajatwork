@@ -133,8 +133,15 @@ const AboutSection = () => {
                       <li className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-cyber-secondary rounded-full mt-2 flex-shrink-0"></div>
                         <div>
-                          <span className="font-semibold text-foreground block text-sm">L2 Systems Engineer/Administrator</span>
+                          <span className="font-semibold text-foreground block text-sm">L2 Systems Engineer/Administrator (Present)</span>
                           <span className="text-sm text-muted-foreground">NoisyLion</span>
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-cyber-primary rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <span className="font-semibold text-foreground block text-sm">IT Infrastructure Specialist Intern</span>
+                          <span className="text-sm text-muted-foreground">MaxVal IP Services</span>
                         </div>
                       </li>
                       <li className="flex items-start gap-3">
