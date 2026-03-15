@@ -8,18 +8,22 @@ import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import StarField from "@/components/StarField";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ServicesSection />
-      <PortfolioSection />
-      <ContactSection />
-      <Footer />
+    <div className="min-h-screen relative">
+      <StarField />
+      <div className="relative z-10">
+        <Navbar />
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ServicesSection />
+        <PortfolioSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </div>
   );
 };

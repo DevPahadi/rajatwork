@@ -64,12 +64,14 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				cyber: {
-					primary: '#4361EE',
-					secondary: '#3A0CA3',
-					accent: '#F7B801',
-					light: '#F1F5F9',
-					dark: '#121826',
-					muted: '#64748B'
+					primary: 'hsl(var(--primary))',
+					secondary: 'hsl(var(--secondary))',
+					accent: 'hsl(var(--accent))',
+					glow: 'hsl(var(--cyber-glow))',
+					cyan: 'hsl(var(--neon-cyan))',
+					green: 'hsl(var(--neon-green))',
+					purple: 'hsl(var(--neon-purple))',
+					dark: 'hsl(var(--space-deep))',
 				}
 			},
 			borderRadius: {
@@ -79,28 +81,20 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
 				},
 				'pulse-slow': {
 					'0%, 100%': { opacity: '1' },
-					'50%': { opacity: '0.8' }
+					'50%': { opacity: '0.5' }
 				},
 				'float': {
 					'0%, 100%': { transform: 'translateY(0)' },
-					'50%': { transform: 'translateY(-10px)' }
+					'50%': { transform: 'translateY(-20px)' }
 				},
 				'gradient-x': {
 					'0%, 100%': {
@@ -115,15 +109,25 @@ export default {
 				'spin-slow': {
 					from: { transform: 'rotate(0deg)' },
 					to: { transform: 'rotate(360deg)' }
+				},
+				'twinkle': {
+					'0%, 100%': { opacity: '0.2', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.5)' }
+				},
+				'meteor': {
+					'0%': { transform: 'translateX(0) translateY(0)', opacity: '1' },
+					'100%': { transform: 'translateX(-500px) translateY(500px)', opacity: '0' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
+				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
 				'float': 'float 6s ease-in-out infinite',
 				'gradient-x': 'gradient-x 15s ease infinite',
-				'spin-slow': 'spin-slow 15s linear infinite'
+				'spin-slow': 'spin-slow 15s linear infinite',
+				'twinkle': 'twinkle 3s ease-in-out infinite',
+				'meteor': 'meteor 3s linear infinite'
 			}
 		}
 	},

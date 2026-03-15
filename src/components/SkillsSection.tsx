@@ -1,41 +1,47 @@
 
 import React from 'react';
-import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+import { motion } from 'framer-motion';
+import { FadeUp, StaggerContainer, StaggerItem } from './AnimatedSection';
 
-const SkillCategory = ({ 
-  title, 
-  icon, 
-  skills 
-}: { 
-  title: string; 
-  icon: React.ReactNode; 
-  skills: { name: string; level: number }[] 
-}) => {
-  return (
-    <Card className="card-hover">
-      <CardContent className="pt-6">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="bg-cyber-primary/10 p-3 rounded-full text-cyber-primary">
-            {icon}
-          </div>
-          <h3 className="font-bold text-lg">{title}</h3>
-        </div>
-        <div className="space-y-4">
-          {skills.map((skill) => (
-            <div key={skill.name}>
-              <div className="flex justify-between items-center mb-1">
-                <span className="text-sm font-medium">{skill.name}</span>
-                <span className="text-xs text-muted-foreground">{skill.level}%</span>
-              </div>
-              <Progress value={skill.level} className="h-2" />
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
+const SkillBar = ({ name, level }: { name: string; level: number }) => (
+  <div>
+    <div className="flex justify-between items-center mb-1.5">
+      <span className="text-sm font-medium">{name}</span>
+      <span className="text-xs mono text-primary">{level}%</span>
+    </div>
+    <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+      <motion.div
+        initial={{ width: 0 }}
+        whileInView={{ width: `${level}%` }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+        className="h-full rounded-full bg-gradient-to-r from-primary to-secondary"
+      />
+    </div>
+  </div>
+);
+
+const SkillCategory = ({
+  title,
+  icon,
+  skills,
+}: {
+  title: string;
+  icon: React.ReactNode;
+  skills: { name: string; level: number }[];
+}) => (
+  <div className="glass-card rounded-2xl p-6">
+    <div className="flex items-center gap-3 mb-6">
+      <div className="bg-primary/10 p-3 rounded-xl text-primary">{icon}</div>
+      <h3 className="font-bold text-lg">{title}</h3>
+    </div>
+    <div className="space-y-4">
+      {skills.map((skill) => (
+        <SkillBar key={skill.name} name={skill.name} level={skill.level} />
+      ))}
+    </div>
+  </div>
+);
 
 const SkillsSection = () => {
   const skillCategories = [
@@ -119,9 +125,6 @@ const SkillsSection = () => {
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="3" />
           <path d="M12 1v6m0 6v6" />
-          <path d="m15.5 3.5-1 1m-5 5-1 1m-5 5-1 1" />
-          <path d="m20.5 8.5-1 1m-5 5-1 1m-5 5-1 1" />
-          <path d="M1 12h6m6 0h6" />
         </svg>
       ),
       skills: [
@@ -153,25 +156,30 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+    <section id="skills" className="section-spacing relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/3 rounded-full blur-[200px]" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <FadeUp className="text-center mb-16">
+          <span className="mono text-xs uppercase tracking-[0.3em] text-secondary mb-4 block">Technical Expertise</span>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 text-gradient">My Skills</h2>
+          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
             Technical expertise and specializations in cybersecurity and related technologies
           </p>
-        </div>
-        
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        </FadeUp>
+
+        <StaggerContainer className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
           {skillCategories.map((category) => (
-            <SkillCategory 
-              key={category.title}
-              title={category.title}
-              icon={category.icon}
-              skills={category.skills}
-            />
+            <StaggerItem key={category.title}>
+              <SkillCategory
+                title={category.title}
+                icon={category.icon}
+                skills={category.skills}
+              />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

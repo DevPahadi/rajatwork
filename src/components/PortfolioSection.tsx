@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { motion, AnimatePresence } from 'framer-motion';
+import { FadeUp } from './AnimatedSection';
 
 type Project = {
   id: number;
@@ -40,88 +40,91 @@ const projects: Project[] = [
   }
 ];
 
-const ProjectCard = ({ project }: { project: Project }) => {
-  return (
-    <Card className="overflow-hidden card-hover group">
-      <div className="h-48 bg-muted relative overflow-hidden">
-        <img 
-          src={project.image} 
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <Button variant="secondary" size="sm" className="bg-cyber-accent text-cyber-dark hover:bg-cyber-accent/90">
-            View Project
-          </Button>
-        </div>
-      </div>
-      <CardContent className="pt-4">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="font-bold text-lg">{project.title}</h3>
-          <Badge variant="outline" className="bg-cyber-primary/10 text-cyber-primary text-xs border-cyber-primary/30">
-            {project.category}
-          </Badge>
-        </div>
-        <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
-        <div className="flex flex-wrap gap-2">
-          {project.technologies.map((tech, index) => (
-            <span key={index} className="text-xs bg-muted px-2 py-1 rounded-full">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
-
 const PortfolioSection = () => {
   const [filter, setFilter] = useState("All");
   const categories = ["All", "Research", "IoT", "Web App"];
-  
-  const filteredProjects = filter === "All" 
-    ? projects 
-    : projects.filter(project => project.category === filter);
+
+  const filteredProjects = filter === "All"
+    ? projects
+    : projects.filter(p => p.category === filter);
 
   return (
-    <section id="portfolio" className="py-24 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-to-r from-cyber-secondary/5 to-cyber-accent/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-r from-cyber-primary/5 to-cyber-secondary/5 rounded-full blur-3xl"></div>
+    <section id="portfolio" className="section-spacing relative overflow-hidden">
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-accent/3 rounded-full blur-[200px]" />
 
-      <div className="container mx-auto px-4 relative">
-        <div className="text-center mb-20">
-          <Badge variant="outline" className="mb-4 px-4 py-2 text-sm">
-            Portfolio
-          </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
-            Featured Projects
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+      <div className="container mx-auto px-4 relative z-10">
+        <FadeUp className="text-center mb-16">
+          <span className="mono text-xs uppercase tracking-[0.3em] text-primary mb-4 block">Portfolio</span>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 text-gradient">Featured Projects</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             A showcase of my cybersecurity projects and technical implementations
           </p>
-        </div>
-        
-        {/* Filter buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <Button 
-              key={category}
-              variant={filter === category ? "default" : "outline"}
-              className={filter === category ? "bg-cyber-primary hover:bg-cyber-primary/90" : "hover:bg-cyber-primary/10 hover:text-cyber-primary"}
-              onClick={() => setFilter(category)}
+        </FadeUp>
+
+        {/* Filters */}
+        <FadeUp delay={0.1} className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((cat) => (
+            <Button
+              key={cat}
+              variant="ghost"
+              className={`rounded-full px-6 transition-all duration-300 ${
+                filter === cat
+                  ? 'bg-primary text-primary-foreground glow-primary'
+                  : 'glass text-muted-foreground hover:text-foreground hover:bg-primary/10'
+              }`}
+              onClick={() => setFilter(cat)}
             >
-              {category}
+              {cat}
             </Button>
           ))}
-        </div>
-        
-        {/* Projects grid */}
+        </FadeUp>
+
+        {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="glass-card rounded-2xl overflow-hidden group">
+                  <div className="h-48 relative overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-4 left-4 right-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 glow-primary">
+                        View Project
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="font-bold text-lg leading-tight">{project.title}</h3>
+                      <span className="glass px-3 py-1 rounded-full text-xs text-primary font-medium whitespace-nowrap ml-2">
+                        {project.category}
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <span key={tech} className="text-xs bg-muted px-2.5 py-1 rounded-full text-muted-foreground">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>
