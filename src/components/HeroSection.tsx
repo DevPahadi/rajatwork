@@ -1,77 +1,68 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Shield, Code, Server, Lock } from "lucide-react";
+import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-muted/30">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-cyber-primary/20 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute top-40 right-10 w-96 h-96 bg-cyber-secondary/15 rounded-full blur-3xl animate-pulse-slow" style={{
-          animationDelay: '1s'
-        }} />
-        <div className="absolute bottom-20 left-1/3 w-64 h-64 bg-cyber-accent/20 rounded-full blur-3xl animate-pulse-slow" style={{
-          animationDelay: '2s'
-        }} />
-        
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(67,97,238,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(67,97,238,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
-      </div>
-      
-      {/* Floating particles */}
-      <div className="absolute top-1/4 left-10 w-2 h-2 bg-cyber-primary rounded-full animate-float" />
-      <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-cyber-accent rounded-full animate-float" style={{
-        animationDelay: '0.5s'
-      }} />
-      <div className="absolute bottom-1/3 right-10 w-2 h-2 bg-cyber-secondary rounded-full animate-float" style={{
-        animationDelay: '1.5s'
-      }} />
-      <div className="absolute bottom-1/4 left-1/4 w-1.5 h-1.5 bg-cyber-primary/70 rounded-full animate-float" style={{
-        animationDelay: '2.5s'
-      }} />
-      
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Ambient glow orbs */}
+      <div className="absolute top-1/4 left-1/6 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[150px] animate-pulse-slow" />
+      <div className="absolute bottom-1/4 right-1/6 w-[400px] h-[400px] bg-secondary/6 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-accent/4 rounded-full blur-[100px]" />
+
+      {/* Grid overlay */}
+      <div className="absolute inset-0 grid-pattern opacity-50" />
+
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           {/* Content */}
-          <div className="lg:w-1/2 text-center lg:text-left">
-            {/* Status badge */}
-            <Badge variant="secondary" className="mb-6 bg-cyber-primary/10 text-cyber-primary border-cyber-primary/20 px-4 py-2">
-              <div className="w-2 h-2 bg-cyber-primary rounded-full mr-2 animate-pulse" />
-              Available for Projects
-            </Badge>
-            
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:w-1/2 text-center lg:text-left"
+          >
+            {/* Status */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-8"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
+              </span>
+              <span className="text-sm font-medium text-muted-foreground">Available for Projects</span>
+            </motion.div>
+
             <div className="space-y-6">
-              <h1 className="text-4xl md:text-6xl xl:text-7xl font-bold leading-tight">
+              <h1 className="text-5xl md:text-7xl xl:text-8xl font-black leading-[0.9] tracking-tight">
                 <span className="block text-foreground">Rajat</span>
-                <span className="block bg-gradient-to-r from-cyber-primary via-cyber-secondary to-cyber-accent bg-clip-text text-transparent animate-gradient-x">
-                  Tripathi
-                </span>
+                <span className="block text-gradient glow-text">Tripathi</span>
               </h1>
-              
-              <div className="text-xl md:text-2xl text-muted-foreground font-medium">
-                <span className="inline-block">Certified Ethical Hacker</span>
-                <span className="mx-3 text-cyber-accent">•</span>
-                <span className="inline-block">Cybersecurity Expert</span>
+
+              <div className="flex items-center gap-3 justify-center lg:justify-start text-lg md:text-xl text-muted-foreground font-medium">
+                <span className="mono text-secondary">{'>'}</span>
+                <span>Certified Ethical Hacker</span>
+                <span className="text-primary">|</span>
+                <span>Cybersecurity Expert</span>
               </div>
-              
-              <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-                Hey, I'm Rajat Tripathi — a cybersecurity enthusiast, CEH v12 certified, and someone who loves breaking things just to build them back safer. From spotting vulnerabilities to tightening server defenses, I blend ethical hacking with real-world IT experience to keep systems sharp and secure. If it's exploitable, I'll find it. If it's broken, I'll fix it — smarter and stronger.
+
+              <p className="text-muted-foreground max-w-xl leading-relaxed text-base md:text-lg">
+                Hey, I'm Rajat Tripathi — a cybersecurity enthusiast, CEH v12 certified, and someone who loves breaking things just to build them back safer. From spotting vulnerabilities to tightening server defenses, I blend ethical hacking with real-world IT experience to keep systems sharp and secure.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-cyber-primary to-cyber-secondary hover:from-cyber-primary/90 hover:to-cyber-secondary/90 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-primary-foreground px-8 py-6 text-lg glow-primary transition-all duration-300 hover:scale-105"
                   onClick={() => scrollToSection('portfolio')}
                 >
                   View Portfolio
@@ -79,110 +70,116 @@ const HeroSection = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-2 border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-white px-8 py-6 text-lg transition-all duration-300 transform hover:-translate-y-1"
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/50 px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
                   onClick={() => scrollToSection('contact')}
                 >
                   Get In Touch
                 </Button>
               </div>
             </div>
-            
-            {/* Tech stack badges */}
-            <div className="mt-12 pt-8 border-t border-border/50">
-              <p className="text-sm text-muted-foreground mb-4 font-medium">Specialized In</p>
+
+            {/* Tech badges */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="mt-12 pt-8 border-t border-border/30"
+            >
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4 mono">Specialized In</p>
               <div className="flex flex-wrap gap-3">
                 {[
                   { icon: Shield, label: "VAPT" },
                   { icon: Lock, label: "OWASP" },
                   { icon: Code, label: "CEH v12" },
                   { icon: Server, label: "Network Security" }
-                ].map((item, index) => (
-                  <div 
-                    key={item.label} 
-                    className="group flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-border/50 px-4 py-2 rounded-full text-sm font-medium hover:border-cyber-primary/50 hover:bg-cyber-primary/5 transition-all duration-300 cursor-default" 
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.9 + i * 0.1 }}
+                    className="glass-card flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium cursor-default"
                   >
-                    <item.icon className="w-4 h-4 text-cyber-primary group-hover:text-cyber-primary transition-colors" />
+                    <item.icon className="w-4 h-4 text-primary" />
                     <span>{item.label}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
-          </div>
-          
-          {/* Hero Visual with Profile Picture */}
-          <div className="lg:w-1/2 flex justify-center">
+            </motion.div>
+          </motion.div>
+
+          {/* Hero Visual */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:w-1/2 flex justify-center"
+          >
             <div className="relative">
-              {/* Main profile container */}
-              <div className="relative w-80 h-80 md:w-96 md:h-96">
-                {/* Gradient border */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyber-primary via-cyber-accent to-cyber-secondary p-1 animate-gradient-x">
-                  <div className="bg-background rounded-full w-full h-full overflow-hidden relative">
-                    {/* Profile image */}
-                    <img 
-                      src="https://i.postimg.cc/PxbtMZzf/RAJAT-PHOTO.jpg" 
-                      alt="Rajat Tripathi - Cybersecurity Expert" 
-                      className="w-full h-full object-cover rounded-full" 
+              <div className="relative w-72 h-72 md:w-[400px] md:h-[400px]">
+                {/* Glow ring */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary via-secondary to-accent p-[3px] animate-gradient-x">
+                  <div className="bg-background rounded-full w-full h-full overflow-hidden">
+                    <img
+                      src="https://i.postimg.cc/PxbtMZzf/RAJAT-PHOTO.jpg"
+                      alt="Rajat Tripathi - Cybersecurity Expert"
+                      className="w-full h-full object-cover rounded-full"
                     />
-                    
-                    {/* Inner glow effect */}
-                    <div className="absolute inset-4 rounded-full border border-cyber-primary/20 animate-pulse-slow" />
                   </div>
                 </div>
-                
-                {/* Orbiting elements */}
-                <div className="absolute inset-0 animate-spin-slow">
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-cyber-accent p-3 rounded-lg shadow-xl">
-                    <Shield className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-                
-                <div className="absolute inset-0 animate-spin-slow" style={{
-                  animationDirection: 'reverse',
-                  animationDuration: '20s'
-                }}>
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-cyber-primary p-3 rounded-lg shadow-xl">
-                    <Lock className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-                
-                {/* Floating tech icons */}
-                <div className="absolute -top-8 -right-8 bg-gradient-to-br from-cyan-500 to-blue-600 p-4 rounded-2xl shadow-2xl animate-float">
-                  <Server className="w-8 h-8 text-white" />
-                </div>
-                
-                <div className="absolute -bottom-8 -left-8 bg-gradient-to-br from-purple-500 to-indigo-600 p-4 rounded-2xl shadow-2xl animate-float" style={{
-                  animationDelay: '1s'
-                }}>
-                  <Code className="w-8 h-8 text-white" />
-                </div>
-                
-                <div className="absolute top-1/2 -right-12 transform -translate-y-1/2 bg-gradient-to-br from-green-500 to-emerald-600 p-3 rounded-xl shadow-2xl animate-float" style={{
-                  animationDelay: '2s'
-                }}>
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
+
+                {/* Orbit ring */}
+                <div className="absolute inset-0 -m-8 border border-primary/20 rounded-full animate-spin-slow" />
+                <div className="absolute inset-0 -m-16 border border-dashed border-secondary/10 rounded-full animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '25s' }} />
+
+                {/* Floating icons */}
+                <motion.div
+                  animate={{ y: [0, -15, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-6 -right-6 glass p-4 rounded-2xl glow-primary"
+                >
+                  <Server className="w-7 h-7 text-secondary" />
+                </motion.div>
+
+                <motion.div
+                  animate={{ y: [0, 12, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute -bottom-6 -left-6 glass p-4 rounded-2xl glow-cyan"
+                >
+                  <Code className="w-7 h-7 text-accent" />
+                </motion.div>
+
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                  className="absolute top-1/2 -right-10 -translate-y-1/2 glass p-3 rounded-xl"
+                >
+                  <Shield className="w-5 h-5 text-primary" />
+                </motion.div>
               </div>
-              
-              {/* Background decorative rings */}
-              <div className="absolute inset-0 -m-8 border-2 border-dashed border-cyber-primary/20 rounded-full animate-spin-slow" />
-              <div className="absolute inset-0 -m-16 border border-cyber-secondary/10 rounded-full" />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-      
+
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-cyber-primary/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-cyber-primary rounded-full mt-2 animate-pulse" />
-        </div>
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center"
+        >
+          <div className="w-1 h-3 bg-primary rounded-full mt-2" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
