@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Shield, Code, Server, Lock } from "lucide-react";
+import { Brain, Bot, Cloud, Shield, Code, Server, Download } from "lucide-react";
 import { motion } from 'framer-motion';
 
 const HeroSection = () => {
@@ -48,15 +48,15 @@ const HeroSection = () => {
                 <span className="block text-gradient glow-text">Tripathi</span>
               </h1>
 
-              <div className="flex items-center gap-3 justify-center lg:justify-start text-lg md:text-xl text-muted-foreground font-medium">
+              <div className="flex items-center gap-3 justify-center lg:justify-start text-lg md:text-xl text-muted-foreground font-medium flex-wrap">
                 <span className="mono text-secondary">{'>'}</span>
-                <span>Certified Ethical Hacker</span>
+                <span>AI R&D Engineer</span>
                 <span className="text-primary">|</span>
-                <span>Cybersecurity Expert</span>
+                <span>Systems &amp; Infrastructure Engineer</span>
               </div>
 
               <p className="text-muted-foreground max-w-xl leading-relaxed text-base md:text-lg">
-                Hey, I'm Rajat Tripathi — a cybersecurity enthusiast, CEH v12 certified, and someone who loves breaking things just to build them back safer. From spotting vulnerabilities to tightening server defenses, I blend ethical hacking with real-world IT experience to keep systems sharp and secure.
+                R&amp;D and Systems Engineer with 2+ years of experience in AI, GenAI, agentic systems, automation, cloud infrastructure, and cybersecurity. Specializes in converting emerging technologies into practical business solutions.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -78,6 +78,14 @@ const HeroSection = () => {
                 >
                   Get In Touch
                 </Button>
+                <a
+                  href="/Rajat_Tripathi_Resume.pdf"
+                  download="Rajat_Tripathi_Resume.pdf"
+                  className="inline-flex items-center justify-center border border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/50 px-8 py-6 text-lg rounded-md transition-all duration-300 hover:scale-105"
+                >
+                  <Download className="mr-2 w-5 h-5" />
+                  Resume
+                </a>
               </div>
             </div>
 
@@ -91,10 +99,10 @@ const HeroSection = () => {
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4 mono">Specialized In</p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { icon: Shield, label: "VAPT" },
-                  { icon: Lock, label: "OWASP" },
-                  { icon: Code, label: "CEH v12" },
-                  { icon: Server, label: "Network Security" }
+                  { icon: Brain, label: "AI & GenAI" },
+                  { icon: Bot, label: "Agentic AI" },
+                  { icon: Cloud, label: "Cloud Infrastructure" },
+                  { icon: Shield, label: "Cybersecurity" }
                 ].map((item, i) => (
                   <motion.div
                     key={item.label}
@@ -125,7 +133,7 @@ const HeroSection = () => {
                   <div className="bg-background rounded-full w-full h-full overflow-hidden">
                     <img
                       src="https://i.postimg.cc/PxbtMZzf/RAJAT-PHOTO.jpg"
-                      alt="Rajat Tripathi - Cybersecurity Expert"
+                      alt="Rajat Tripathi - AI R&D Engineer"
                       className="w-full h-full object-cover rounded-full"
                     />
                   </div>

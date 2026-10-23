@@ -3,6 +3,47 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Terminal, Sun, MoonStar } from 'lucide-react';
+import { useTheme, THEME_OPTIONS, type ThemeName } from '@/contexts/ThemeContext';
+
+const themeIcons: Record<ThemeName, React.ElementType> = {
+  'cyber-dark': Terminal,
+  'light-tech': Sun,
+  'midnight-purple': MoonStar,
+};
+
+const ThemeSwitcher = ({ className }: { className?: string }) => {
+  const { theme, setTheme } = useTheme();
+  return (
+    <div
+      className={cn('glass rounded-full p-1 flex items-center gap-1', className)}
+      role="group"
+      aria-label="Theme selection"
+    >
+      {THEME_OPTIONS.map((opt) => {
+        const Icon = themeIcons[opt.name];
+        const active = theme === opt.name;
+        return (
+          <button
+            key={opt.name}
+            onClick={() => setTheme(opt.name)}
+            title={opt.label}
+            aria-label={`${opt.label} theme`}
+            aria-pressed={active}
+            className={cn(
+              'w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300',
+              active
+                ? 'bg-primary text-primary-foreground glow-primary'
+                : 'text-muted-foreground hover:text-foreground'
+            )}
+          >
+            <Icon className="w-4 h-4" />
+          </button>
+        );
+      })}
+    </div>
+  );
+};
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,7 +97,8 @@ const Navbar = () => {
               <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-3/4 transition-all duration-300" />
             </a>
           ))}
-          <a href="#contact" className="ml-4">
+          <ThemeSwitcher className="ml-3" />
+          <a href="#contact" className="ml-3">
             <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-primary-foreground glow-primary px-6">
               Contact
             </Button>
@@ -67,6 +109,7 @@ const Navbar = () => {
         <button
           className="md:hidden text-foreground p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             {!mobileMenuOpen ? (
@@ -98,6 +141,10 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
+              <div className="flex items-center justify-between px-4 py-2">
+                <span className="text-sm text-muted-foreground">Theme</span>
+                <ThemeSwitcher />
+              </div>
               <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 w-full mt-2">
                   Contact
