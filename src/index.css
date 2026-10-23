@@ -6,7 +6,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root,
+  [data-theme='cyber-dark'] {
     --background: 230 25% 5%;
     --foreground: 210 40% 96%;
 
@@ -44,6 +45,86 @@
     --space-deep: 230 30% 3%;
     --glass: 230 25% 12%;
   }
+
+  [data-theme='light-tech'] {
+    color-scheme: light;
+    --background: 210 40% 98%;
+    --foreground: 230 30% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 230 30% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 30% 12%;
+
+    --primary: 235 75% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 195 85% 38%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 30% 92%;
+    --muted-foreground: 220 15% 42%;
+
+    --accent: 165 80% 30%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 84%;
+    --input: 220 20% 84%;
+    --ring: 235 75% 55%;
+
+    --radius: 0.75rem;
+
+    --cyber-glow: 235 75% 55%;
+    --neon-cyan: 195 85% 38%;
+    --neon-green: 165 80% 30%;
+    --neon-purple: 270 75% 55%;
+    --space-deep: 215 35% 94%;
+    --glass: 0 0% 100%;
+  }
+
+  [data-theme='midnight-purple'] {
+    color-scheme: dark;
+    --background: 265 45% 6%;
+    --foreground: 270 35% 94%;
+
+    --card: 265 40% 10%;
+    --card-foreground: 270 35% 94%;
+
+    --popover: 265 40% 10%;
+    --popover-foreground: 270 35% 94%;
+
+    --primary: 270 90% 70%;
+    --primary-foreground: 265 45% 8%;
+
+    --secondary: 320 90% 68%;
+    --secondary-foreground: 265 45% 8%;
+
+    --muted: 265 32% 15%;
+    --muted-foreground: 265 18% 66%;
+
+    --accent: 195 90% 60%;
+    --accent-foreground: 265 45% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 270 35% 96%;
+
+    --border: 265 28% 20%;
+    --input: 265 28% 20%;
+    --ring: 270 90% 70%;
+
+    --radius: 0.75rem;
+
+    --cyber-glow: 270 90% 70%;
+    --neon-cyan: 195 90% 60%;
+    --neon-green: 165 85% 55%;
+    --neon-purple: 285 85% 65%;
+    --space-deep: 265 50% 4%;
+    --glass: 265 32% 14%;
+  }
 }
 
 @layer base {
@@ -55,6 +136,7 @@
     @apply bg-background text-foreground;
     font-family: 'Space Grotesk', sans-serif;
     overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {

@@ -46,22 +46,52 @@ const SkillCategory = ({
 const SkillsSection = () => {
   const skillCategories = [
     {
-      title: "Cybersecurity",
+      title: "AI & Machine Learning",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+          <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+          <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
+          <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
         </svg>
       ),
       skills: [
-        { name: "VAPT", level: 95 },
-        { name: "OWASP Top 10", level: 90 },
-        { name: "MITRE ATT&CK", level: 85 },
-        { name: "ISO/IEC 27001", level: 80 },
-        { name: "NIST Framework", level: 78 }
+        { name: "Agentic AI", level: 88 },
+        { name: "GenAI", level: 90 },
+        { name: "Agentic AI", level: 88 },
+        { name: "Multi-Agent Architectures", level: 85 },
+        { name: "Prompt Engineering", level: 90 }
       ]
     },
     {
-      title: "Network Security",
+      title: "Development",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+      ),
+      skills: [
+        { name: "Python", level: 88 },
+        { name: "C++", level: 75 },
+        { name: "React", level: 82 },
+        { name: "Next.js", level: 80 },
+        { name: "REST APIs", level: 85 }
+      ]
+    },
+    {
+      title: "Cloud",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+        </svg>
+      ),
+      skills: [
+        { name: "AWS", level: 82 },
+        { name: "Azure", level: 78 }
+      ]
+    },
+    {
+      title: "Infrastructure",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
@@ -71,56 +101,14 @@ const SkillsSection = () => {
         </svg>
       ),
       skills: [
-        { name: "TCP/IP", level: 90 },
-        { name: "Endpoint Security", level: 85 },
-        { name: "VPNs", level: 88 },
-        { name: "IDS/IPS", level: 82 },
-        { name: "SIEM", level: 80 },
-        { name: "Firewalls", level: 90 }
-      ]
-    },
-    {
-      title: "OS & Server Administration",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="4" y="4" width="16" height="16" rx="2" />
-          <rect x="9" y="9" width="6" height="6" />
-          <line x1="9" y1="2" x2="9" y2="4" />
-          <line x1="15" y1="2" x2="15" y2="4" />
-          <line x1="9" y1="20" x2="9" y2="22" />
-          <line x1="15" y1="20" x2="15" y2="22" />
-          <line x1="20" y1="9" x2="22" y2="9" />
-          <line x1="20" y1="15" x2="22" y2="15" />
-          <line x1="2" y1="9" x2="4" y2="9" />
-          <line x1="2" y1="15" x2="4" y2="15" />
-        </svg>
-      ),
-      skills: [
         { name: "Linux", level: 90 },
         { name: "Windows Server", level: 85 },
-        { name: "AWS/Azure/GSuite", level: 75 },
-        { name: "Active Directory", level: 80 },
-        { name: "IT Support", level: 88 }
+        { name: "Networking", level: 88 },
+        { name: "Firewalls", level: 86 }
       ]
     },
     {
-      title: "SOC & Security Tools",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 8a6 6 0 0 0-6-6H8a6 6 0 0 0 0 12h4a6 6 0 0 1 0 12H8a6 6 0 0 1-6-6" />
-        </svg>
-      ),
-      skills: [
-        { name: "Wireshark", level: 85 },
-        { name: "Nmap", level: 90 },
-        { name: "Metasploit", level: 88 },
-        { name: "BurpSuite", level: 85 },
-        { name: "Nessus", level: 82 },
-        { name: "Splunk", level: 75 }
-      ]
-    },
-    {
-      title: "DevOps & DevSecOps",
+      title: "Automation",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="3" />
@@ -128,29 +116,25 @@ const SkillsSection = () => {
         </svg>
       ),
       skills: [
-        { name: "CI/CD Fundamentals", level: 70 },
-        { name: "Shell Scripting", level: 85 },
-        { name: "Bash", level: 88 },
-        { name: "Ansible (Basics)", level: 65 },
-        { name: "Git", level: 82 },
-        { name: "Docker", level: 75 }
+        { name: "PowerShell", level: 85 },
+        { name: "CI/CD", level: 78 },
+        { name: "Git & GitHub", level: 88 },
+        { name: "ITSM", level: 80 },
+        { name: "RMM", level: 75 }
       ]
     },
     {
-      title: "Programming & Databases",
+      title: "Cybersecurity",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="16 18 22 12 16 6" />
-          <polyline points="8 6 2 12 8 18" />
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
         </svg>
       ),
       skills: [
-        { name: "Python", level: 85 },
-        { name: "C/C++", level: 78 },
-        { name: "Bash", level: 88 },
-        { name: "Log Parsing", level: 80 },
-        { name: "MySQL", level: 75 },
-        { name: "PostgreSQL", level: 72 }
+        { name: "ISO 27001", level: 85 },
+        { name: "Incident Response", level: 82 },
+        { name: "Vulnerability Assessment", level: 88 },
+        { name: "Endpoint Protection", level: 85 }
       ]
     }
   ];
